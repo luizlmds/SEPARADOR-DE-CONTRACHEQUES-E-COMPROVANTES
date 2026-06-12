@@ -15,6 +15,8 @@
   --black: #1a1a1a; --surface: #f5f5f0; --white: #ffffff;
   --border: #d8d8ce; --text: #2a2a2a; --muted: #777;
   --error: #d93025; --success: #34a853;
+  --purple: #7b3fa0; --purple-dark: #5c2e7a;
+  --blue: #1a73e8; --blue-dark: #1557b0;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: Arial, Helvetica, sans-serif; background: #eeeee8; min-height: 100vh; color: var(--text); display: flex; flex-direction: column; }
@@ -25,7 +27,7 @@ body { font-family: Arial, Helvetica, sans-serif; background: #eeeee8; min-heigh
 
 .body { display: flex; flex: 1; }
 .sidebar { width: 220px; background: var(--white); border-right: 1px solid var(--border); padding: 28px 0; flex-shrink: 0; }
-.sidebar-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); padding: 0 18px 10px; }
+.sidebar-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); padding: 0 18px 12px; }
 .nav { display: flex; align-items: center; gap: 10px; padding: 12px 18px; cursor: pointer; color: var(--muted); font-size: 13px; font-weight: 700; border-left: 3px solid transparent; transition: all .18s; user-select: none; }
 .nav:hover { background: var(--surface); color: var(--text); }
 .nav.active { background: rgba(74,140,63,.09); color: var(--green); border-left-color: var(--green); }
@@ -34,9 +36,8 @@ body { font-family: Arial, Helvetica, sans-serif; background: #eeeee8; min-heigh
 
 .content { flex: 1; padding: 32px; overflow-y: auto; }
 .page { display: none; } .page.active { display: block; }
-
 .page-title { font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; color: var(--black); }
-.page-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+.page-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; line-height: 1.5; }
 
 .card { background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 24px; margin-bottom: 18px; }
 .card-title { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--black); display: flex; align-items: center; gap: 8px; padding-bottom: 14px; margin-bottom: 18px; border-bottom: 2px solid var(--surface); }
@@ -59,13 +60,17 @@ body { font-family: Arial, Helvetica, sans-serif; background: #eeeee8; min-heigh
 .file-tag-clear { margin-left: auto; cursor: pointer; color: var(--muted); font-size: 16px; flex-shrink: 0; }
 .file-tag-clear:hover { color: var(--error); }
 
-.btn-process { display: inline-flex; align-items: center; gap: 10px; padding: 13px 30px; background: var(--green); color: white; border: none; border-radius: 3px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background .18s; margin-top: 6px; }
+.btn-process { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: var(--green); color: white; border: none; border-radius: 3px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background .18s; margin-top: 6px; }
 .btn-process:hover { background: var(--green-dark); }
 .btn-process:disabled { background: #aaa; cursor: not-allowed; }
 
-.btn-unify { display: inline-flex; align-items: center; gap: 10px; padding: 13px 30px; background: #7b3fa0; color: white; border: none; border-radius: 3px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background .18s; margin-top: 6px; }
-.btn-unify:hover { background: #5c2e7a; }
+.btn-unify { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: var(--purple); color: white; border: none; border-radius: 3px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background .18s; margin-top: 6px; }
+.btn-unify:hover { background: var(--purple-dark); }
 .btn-unify:disabled { background: #aaa; cursor: not-allowed; }
+
+.btn-blue { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: var(--blue); color: white; border: none; border-radius: 3px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background .18s; margin-top: 6px; }
+.btn-blue:hover { background: var(--blue-dark); }
+.btn-blue:disabled { background: #aaa; cursor: not-allowed; }
 
 .btn-gold { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; background: var(--gold); color: var(--black); border: none; border-radius: 3px; font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; text-decoration: none; transition: background .18s; }
 .btn-gold:hover { background: var(--gold-dark); }
@@ -74,13 +79,20 @@ body { font-family: Arial, Helvetica, sans-serif; background: #eeeee8; min-heigh
 .btn-dark:hover { background: #333; }
 .btn-dark:disabled { background: #888; cursor: not-allowed; }
 
-.btn-purple { display: none; align-items: center; gap: 6px; padding: 12px 28px; background: #7b3fa0; color: white; border: none; border-radius: 3px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background .18s; margin-top: 12px; }
-.btn-purple:hover { background: #5c2e7a; }
+.btn-outline-red { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; background: transparent; border: 1.5px solid var(--error); color: var(--error); border-radius: 3px; font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; transition: all .18s; }
+.btn-outline-red:hover { background: var(--error); color: white; }
+
+.btn-dl-result { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: var(--blue); color: white; border: none; border-radius: 3px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background .18s; margin-top: 12px; }
+.btn-dl-result:hover { background: var(--blue-dark); }
+
+.btn-dl-purple { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: var(--purple); color: white; border: none; border-radius: 3px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background .18s; margin-top: 12px; }
+.btn-dl-purple:hover { background: var(--purple-dark); }
 
 .progress-wrap { display: none; margin-top: 18px; }
 .progress-bg { height: 6px; background: var(--surface); border-radius: 3px; overflow: hidden; margin-bottom: 7px; }
 .progress-fill { height: 100%; background: linear-gradient(90deg, var(--green), var(--green-light)); border-radius: 3px; transition: width .3s; width: 0%; }
-.progress-fill-purple { background: linear-gradient(90deg, #7b3fa0, #b06fd4); }
+.progress-fill-purple { background: linear-gradient(90deg, var(--purple), #b06fd4); }
+.progress-fill-blue { background: linear-gradient(90deg, var(--blue), #4da3ff); }
 .progress-txt { font-size: 12px; color: var(--muted); font-weight: 600; }
 
 .alert { display: none; padding: 13px 16px; border-radius: 3px; font-size: 13px; font-weight: 600; margin-top: 14px; }
@@ -100,9 +112,150 @@ body { font-family: Arial, Helvetica, sans-serif; background: #eeeee8; min-heigh
 .preview-table th { padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--border); font-weight: 700; background: var(--surface); }
 .preview-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
 
-.info-box { background: rgba(123,63,160,.07); border-left: 3px solid #7b3fa0; border-radius: 3px; padding: 12px 16px; font-size: 13px; color: #4a1e6a; margin-bottom: 18px; line-height: 1.6; }
+.info-box { border-radius: 3px; padding: 12px 16px; font-size: 13px; margin-bottom: 18px; line-height: 1.6; }
+.info-box-purple { background: rgba(123,63,160,.07); border-left: 3px solid var(--purple); color: #4a1e6a; }
+.info-box-blue { background: rgba(26,115,232,.07); border-left: 3px solid var(--blue); color: #0d3f7a; }
+
+/* ---- PDF MERGE LIST ---- */
+.pdf-add-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+
+.pdf-merge-list-wrap { border: 1px solid var(--border); border-radius: 4px; background: var(--surface); min-height: 80px; }
+.pdf-merge-empty { padding: 36px; text-align: center; color: var(--muted); font-size: 13px; }
+
+#pdf-merge-list { padding: 8px; }
+.pdf-merge-item {
+  display: flex; align-items: center; gap: 10px;
+  background: white; border: 1.5px solid var(--border); border-radius: 4px;
+  padding: 12px 14px; margin-bottom: 8px;
+  cursor: grab; transition: all .18s;
+  user-select: none;
+}
+.pdf-merge-item:last-child { margin-bottom: 0; }
+.pdf-merge-item:hover { border-color: var(--blue); box-shadow: 0 2px 8px rgba(26,115,232,.1); }
+.pdf-merge-item.dragging { opacity: 0.4; border-style: dashed; }
+.pdf-merge-item.drag-over-item { border-color: var(--blue); background: rgba(26,115,232,.06); transform: scale(1.01); }
+
+.pdf-merge-handle { font-size: 18px; color: #bbb; cursor: grab; flex-shrink: 0; line-height: 1; letter-spacing: -2px; }
+.pdf-merge-num { width: 26px; height: 26px; background: var(--blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
+.pdf-merge-icon { font-size: 20px; flex-shrink: 0; }
+.pdf-merge-info { flex: 1; overflow: hidden; }
+.pdf-merge-name { font-size: 13px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pdf-merge-pages { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.pdf-merge-remove { background: none; border: none; color: #bbb; font-size: 16px; cursor: pointer; padding: 4px; border-radius: 3px; flex-shrink: 0; }
+.pdf-merge-remove:hover { color: var(--error); background: rgba(217,48,37,.08); }
+
+#pdf-merge-actions { display: none; align-items: center; justify-content: space-between; margin-top: 16px; flex-wrap: wrap; gap: 10px; }
 
 @media(max-width:768px) { .two-col { grid-template-columns: 1fr; } .sidebar { display: none; } .content { padding: 18px; } }
+
+/* ---- ASSINATURA ---- */
+.sg-saved-item {
+  border: 1.5px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color .18s;
+}
+.sg-saved-item:hover { border-color: var(--purple); }
+.sg-saved-item-img {
+  width: 100%;
+  height: 64px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px dashed var(--border);
+  border-radius: 3px;
+  padding: 4px;
+  cursor: pointer;
+}
+.sg-saved-item-img:hover { border-color: var(--purple); }
+.sg-saved-item-name {
+  font-size: 12px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text);
+}
+.sg-saved-item-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.sg-saved-use-btn {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.sg-saved-use-btn:hover { background: var(--purple-dark); }
+.sg-saved-del-btn {
+  font-size: 14px;
+  background: none;
+  border: none;
+  color: #bbb;
+  cursor: pointer;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+.sg-saved-del-btn:hover { color: var(--error); background: rgba(217,48,37,.08); }
+
+/* Modal de nome */
+#sg-name-modal {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+#sg-name-modal.open { display: flex; }
+#sg-name-modal-box {
+  background: #fff;
+  border-radius: 6px;
+  padding: 28px 28px 22px;
+  width: 340px;
+  max-width: 90vw;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+}
+#sg-name-modal-box h3 { font-size: 15px; font-weight: 800; margin-bottom: 14px; }
+#sg-name-input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  outline: none;
+  margin-bottom: 16px;
+}
+#sg-name-input:focus { border-color: var(--purple); }
+#sg-name-modal-btns { display: flex; gap: 10px; justify-content: flex-end; }
+
+
+  position: absolute;
+  width: 12px; height: 12px;
+  background: var(--blue);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+#sg-sig-overlay {
+  outline: 2px dashed rgba(26,115,232,0.7);
+  border-radius: 2px;
+}
+#sg-sig-overlay:hover {
+  outline-color: var(--blue);
+}
 </style>
 </head>
 <body>
@@ -118,6 +271,8 @@ body { font-family: Arial, Helvetica, sans-serif; background: #eeeee8; min-heigh
     <div class="nav active" id="nav-cc" onclick="goPage('cc')"><div class="nav-icon">📄</div> Contracheques</div>
     <div class="nav" id="nav-cp" onclick="goPage('cp')"><div class="nav-icon">🏦</div> Comprovantes</div>
     <div class="nav" id="nav-uz" onclick="goPage('uz')"><div class="nav-icon">🔗</div> Unificar</div>
+    <div class="nav" id="nav-pm" onclick="goPage('pm')"><div class="nav-icon">📎</div> Unificar PDF</div>
+    <div class="nav" id="nav-sg" onclick="goPage('sg')"><div class="nav-icon">✍️</div> Assinar Documento</div>
   </nav>
 
   <main class="content">
@@ -125,7 +280,7 @@ body { font-family: Arial, Helvetica, sans-serif; background: #eeeee8; min-heigh
     <!-- CONTRACHEQUES -->
     <div class="page active" id="page-cc">
       <div class="page-title">Separador de Contracheques</div>
-      <div class="page-sub">Cada contracheque será salvo com o nome completo do colaborador seguido do número 1 (ex: João da Silva 1.pdf).</div>
+      <div class="page-sub">Cada contracheque será salvo com o nome completo do colaborador seguido do número 1 — ex: <strong>João da Silva 1.pdf</strong></div>
       <div class="card">
         <div class="card-title"><div class="dot"></div>Upload do Arquivo PDF</div>
         <div class="upload-area" id="cc-area" ondragover="dragOver(event,'cc-area')" ondragleave="dragLeave('cc-area')" ondrop="drop(event,'cc')">
@@ -164,9 +319,7 @@ body { font-family: Arial, Helvetica, sans-serif; background: #eeeee8; min-heigh
           <a class="btn-gold" href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,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" download="PLANILHA_MODELO.xlsx">⬇ Baixar Planilha Modelo</a>
           <div style="margin-top:16px">
             <div class="upload-area" id="xl-area" ondragover="dragOver(event,'xl-area')" ondragleave="dragLeave('xl-area')" ondrop="drop(event,'xl')">
-              <div class="u-icon">📊</div>
-              <h4>Arraste a Planilha aqui</h4>
-              <p>Excel com NOME, CPF e DEPARTAMENTO</p>
+              <div class="u-icon">📊</div><h4>Arraste a Planilha aqui</h4><p>Excel com NOME, CPF e DEPARTAMENTO</p>
               <button type="button" class="btn-select" onclick="document.getElementById('xl-file').click()">📂 Selecionar Planilha</button>
               <input type="file" id="xl-file" accept=".xlsx,.xls,.csv" style="display:none" onchange="fileSelected('xl',this);loadPlanilha(this)">
             </div>
@@ -180,9 +333,7 @@ body { font-family: Arial, Helvetica, sans-serif; background: #eeeee8; min-heigh
         <div class="card">
           <div class="card-title"><div class="dot"></div>Arquivo de Comprovantes</div>
           <div class="upload-area" id="cp-area" ondragover="dragOver(event,'cp-area')" ondragleave="dragLeave('cp-area')" ondrop="drop(event,'cp')">
-            <div class="u-icon">🏦</div>
-            <h4>Arraste o PDF aqui</h4>
-            <p>PDF com todos os comprovantes</p>
+            <div class="u-icon">🏦</div><h4>Arraste o PDF aqui</h4><p>PDF com todos os comprovantes</p>
             <button type="button" class="btn-select" onclick="document.getElementById('cp-file').click()">📂 Selecionar Arquivo</button>
             <input type="file" id="cp-file" accept=".pdf" style="display:none" onchange="fileSelected('cp',this)">
           </div>
@@ -210,22 +361,16 @@ body { font-family: Arial, Helvetica, sans-serif; background: #eeeee8; min-heigh
       </div>
     </div>
 
-    <!-- UNIFICAR -->
+    <!-- UNIFICAR COMPROVANTES -->
     <div class="page" id="page-uz">
       <div class="page-title">Unificar Comprovantes</div>
-      <div class="page-sub">Combina contracheques e comprovantes em um único PDF por colaborador: contracheque em cima, comprovante embaixo.</div>
-
-      <div class="info-box">
-        💡 <strong>Como funciona:</strong> Anexe o ZIP dos contracheques (arquivos com " 1" no final do nome) e o ZIP dos comprovantes. O sistema cruza os nomes e gera um PDF unificado na ordem: contracheque → comprovante, colaborador por colaborador.
-      </div>
-
+      <div class="page-sub">Combina contracheques e comprovantes em um único PDF — contracheque em cima, comprovante embaixo, por colaborador.</div>
+      <div class="info-box info-box-purple">💡 <strong>Como funciona:</strong> Anexe o ZIP dos contracheques (nomes com " 1") e o ZIP dos comprovantes. O sistema cruza automaticamente e gera um PDF unificado.</div>
       <div class="two-col">
         <div class="card">
           <div class="card-title"><div class="dot"></div>ZIP dos Contracheques</div>
           <div class="upload-area" id="uz_cc-area" ondragover="dragOver(event,'uz_cc-area')" ondragleave="dragLeave('uz_cc-area')" ondrop="drop(event,'uz_cc')">
-            <div class="u-icon">🗜️</div>
-            <h4>ZIP dos Contracheques</h4>
-            <p>Arquivos com " 1" no final do nome</p>
+            <div class="u-icon">🗜️</div><h4>ZIP dos Contracheques</h4><p>Arquivos com " 1" no final</p>
             <button type="button" class="btn-select" onclick="document.getElementById('uz_cc-file').click()">📂 Selecionar ZIP</button>
             <input type="file" id="uz_cc-file" accept=".zip" style="display:none" onchange="fileSelected('uz_cc',this)">
           </div>
@@ -238,9 +383,7 @@ body { font-family: Arial, Helvetica, sans-serif; background: #eeeee8; min-heigh
         <div class="card">
           <div class="card-title"><div class="dot"></div>ZIP dos Comprovantes</div>
           <div class="upload-area" id="uz_cp-area" ondragover="dragOver(event,'uz_cp-area')" ondragleave="dragLeave('uz_cp-area')" ondrop="drop(event,'uz_cp')">
-            <div class="u-icon">🗜️</div>
-            <h4>ZIP dos Comprovantes</h4>
-            <p>Gerado na aba Comprovantes</p>
+            <div class="u-icon">🗜️</div><h4>ZIP dos Comprovantes</h4><p>Gerado na aba Comprovantes</p>
             <button type="button" class="btn-select" onclick="document.getElementById('uz_cp-file').click()">📂 Selecionar ZIP</button>
             <input type="file" id="uz_cp-file" accept=".zip" style="display:none" onchange="fileSelected('uz_cp',this)">
           </div>
@@ -251,27 +394,202 @@ body { font-family: Arial, Helvetica, sans-serif; background: #eeeee8; min-heigh
           </div>
         </div>
       </div>
-
       <button type="button" class="btn-unify" id="uz-btn" onclick="processUnify()">🔗 Unificar PDFs</button>
       <div class="progress-wrap" id="uz-prog"><div class="progress-bg"><div class="progress-fill progress-fill-purple" id="uz-bar"></div></div><div class="progress-txt" id="uz-txt"></div></div>
       <div class="alert alert-err" id="uz-err"></div>
       <div class="alert alert-ok" id="uz-ok"></div>
-
       <div id="uz-results" style="display:none;margin-top:24px">
         <div class="card">
           <div class="card-title"><div class="dot"></div>PDF Unificado Gerado</div>
           <div id="uz-summary"></div>
-          <button type="button" class="btn-purple" id="uz-dl-final">⬇ Baixar PDF Unificado</button>
+          <button type="button" class="btn-dl-purple" id="uz-dl-final" style="display:none">⬇ Baixar PDF Unificado</button>
         </div>
       </div>
+    </div>
+
+    <!-- UNIFICAR PDF -->
+    <div class="page" id="page-pm">
+      <div class="page-title">Unificar PDF</div>
+      <div class="page-sub">Adicione múltiplos arquivos PDF e arraste para definir a ordem desejada. No final, clique em Unificar para gerar um único PDF.</div>
+
+      <div class="info-box info-box-blue">📌 <strong>Dica:</strong> Arraste os itens da lista para reordená-los antes de unificar. O número à esquerda indica a posição final no PDF.</div>
+
+      <div class="card">
+        <div class="card-title"><div class="dot"></div>Adicionar Arquivos PDF</div>
+        <div class="pdf-add-bar">
+          <button type="button" class="btn-select" style="border-color:var(--blue);color:var(--blue)" onclick="document.getElementById('pm-file-input').click()">
+            ➕ Adicionar PDFs
+          </button>
+          <input type="file" id="pm-file-input" accept=".pdf" multiple style="display:none" onchange="onPdfFilesAdded(this)">
+          <span style="font-size:12px;color:var(--muted)">Você pode selecionar vários arquivos de uma vez</span>
+        </div>
+
+        <div class="pdf-merge-list-wrap">
+          <div class="pdf-merge-empty" id="pdf-merge-empty">
+            Nenhum arquivo adicionado ainda.<br>Clique em <strong>Adicionar PDFs</strong> para começar.
+          </div>
+          <div id="pdf-merge-list"></div>
+        </div>
+
+        <div id="pdf-merge-actions">
+          <span style="font-size:13px;color:var(--muted)" id="pm-count"></span>
+          <button type="button" class="btn-outline-red" onclick="clearPdfList()">🗑 Limpar tudo</button>
+        </div>
+      </div>
+
+      <button type="button" class="btn-blue" id="pm-btn" onclick="processPdfMerge()">📎 Unificar PDFs</button>
+      <div class="progress-wrap" id="pm-prog"><div class="progress-bg"><div class="progress-fill progress-fill-blue" id="pm-bar"></div></div><div class="progress-txt" id="pm-txt"></div></div>
+      <div class="alert alert-err" id="pm-err"></div>
+      <div class="alert alert-ok" id="pm-ok"></div>
+      <div id="pm-results" style="display:none;margin-top:24px">
+        <div class="card">
+          <div class="card-title"><div class="dot"></div>PDF Gerado</div>
+          <button type="button" class="btn-dl-result" id="pm-dl-final">⬇ Baixar PDF Unificado</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASSINAR DOCUMENTO -->
+    <div class="page" id="page-sg">
+      <div class="page-title">Assinar Documento</div>
+      <div class="page-sub">Carregue um PDF, anexe sua assinatura (imagem PNG/JPG) e posicione-a livremente em qualquer página. Arraste para mover e use as alças para redimensionar.</div>
+
+      <div class="two-col" style="margin-bottom:18px">
+        <div class="card">
+          <div class="card-title"><div class="dot"></div>1. Documento PDF</div>
+          <div class="upload-area" id="sg-pdf-area" ondragover="dragOver(event,'sg-pdf-area')" ondragleave="dragLeave('sg-pdf-area')" ondrop="sgDropPdf(event)">
+            <div class="u-icon">📄</div>
+            <h4>Arraste o PDF aqui</h4>
+            <p>Documento que será assinado</p>
+            <button type="button" class="btn-select" onclick="document.getElementById('sg-pdf-file').click()">📂 Selecionar PDF</button>
+            <input type="file" id="sg-pdf-file" accept=".pdf" style="display:none" onchange="sgLoadPdf(this)">
+          </div>
+          <div class="file-tag" id="sg-pdf-tag">
+            <span style="font-size:20px">📄</span>
+            <div style="overflow:hidden;flex:1"><div class="file-tag-name" id="sg-pdf-tag-name"></div><div class="file-tag-size" id="sg-pdf-tag-size"></div></div>
+            <span class="file-tag-clear" onclick="sgClearPdf()">✕</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><div class="dot"></div>2. Imagem da Assinatura</div>
+          <div class="upload-area" id="sg-sig-area" ondragover="dragOver(event,'sg-sig-area')" ondragleave="dragLeave('sg-sig-area')" ondrop="sgDropSig(event)">
+            <div class="u-icon">✍️</div>
+            <h4>Arraste a imagem aqui</h4>
+            <p>PNG ou JPG com fundo transparente</p>
+            <button type="button" class="btn-select" onclick="document.getElementById('sg-sig-file').click()">📂 Selecionar Imagem</button>
+            <input type="file" id="sg-sig-file" accept="image/png,image/jpeg,image/jpg" style="display:none" onchange="sgLoadSig(this)">
+          </div>
+          <div class="file-tag" id="sg-sig-tag">
+            <span style="font-size:20px">🖼️</span>
+            <div style="overflow:hidden;flex:1"><div class="file-tag-name" id="sg-sig-tag-name"></div><div class="file-tag-size" id="sg-sig-tag-size"></div></div>
+            <span class="file-tag-clear" onclick="sgClearSig()">✕</span>
+          </div>
+          <div id="sg-sig-preview-wrap" style="display:none;margin-top:14px;text-align:center">
+            <img id="sg-sig-preview" style="max-height:80px;max-width:100%;border:1px dashed var(--border);border-radius:4px;padding:6px;background:#fff" alt="Preview assinatura">
+          </div>
+        </div>
+      </div>
+
+      <!-- ASSINATURAS SALVAS -->
+      <div class="card" id="sg-saved-card">
+        <div class="card-title" style="justify-content:space-between;margin-bottom:0;border-bottom:none;padding-bottom:0">
+          <div style="display:flex;align-items:center;gap:8px"><div class="dot" style="background:var(--purple)"></div>Assinaturas Salvas</div>
+          <button type="button" class="btn-select" style="border-color:var(--purple);color:var(--purple)" onclick="sgSaveCurrentSig()" id="sg-save-btn" disabled>💾 Salvar Assinatura Atual</button>
+        </div>
+        <div id="sg-saved-list" style="margin-top:14px">
+          <div id="sg-saved-empty" style="text-align:center;padding:20px 0;color:var(--muted);font-size:13px">Nenhuma assinatura salva ainda.</div>
+          <div id="sg-saved-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px"></div>
+        </div>
+      </div>
+
+      <div id="sg-editor-wrap" style="display:none">
+        <div class="card">
+          <div class="card-title" style="justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:8px"><div class="dot"></div>Posicionar Assinatura</div>
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+              <label style="font-size:12px;color:var(--muted);font-weight:600">Página:</label>
+              <select id="sg-page-select" onchange="sgRenderPage(parseInt(this.value))" style="padding:5px 10px;border:1.5px solid var(--border);border-radius:3px;font-size:13px;font-family:Arial;background:#fff"></select>
+              <span id="sg-page-info" style="font-size:12px;color:var(--muted)"></span>
+            </div>
+          </div>
+          <div class="info-box info-box-blue" style="margin-bottom:14px">
+            💡 <strong>Como usar:</strong> Clique e arraste a assinatura para posicioná-la. Use as alças nos cantos para redimensionar mantendo a proporção.
+          </div>
+          <div id="sg-canvas-outer" style="overflow:auto;background:#888;padding:16px;border-radius:4px;max-height:75vh">
+            <div id="sg-canvas-container" style="position:relative;display:inline-block;box-shadow:0 4px 20px rgba(0,0,0,0.3)">
+              <canvas id="sg-pdf-canvas" style="display:block"></canvas>
+              <!-- Assinatura draggable -->
+              <div id="sg-sig-overlay" style="display:none;position:absolute;cursor:move;user-select:none;touch-action:none" title="Arraste para mover">
+                <img id="sg-sig-img" style="width:100%;height:100%;display:block;pointer-events:none" alt="Assinatura">
+                <!-- Resize handles -->
+                <div class="sg-resize-handle" data-corner="se" style="bottom:-6px;right:-6px;cursor:se-resize"></div>
+                <div class="sg-resize-handle" data-corner="sw" style="bottom:-6px;left:-6px;cursor:sw-resize"></div>
+                <div class="sg-resize-handle" data-corner="ne" style="top:-6px;right:-6px;cursor:ne-resize"></div>
+                <div class="sg-resize-handle" data-corner="nw" style="top:-6px;left:-6px;cursor:nw-resize"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:0">
+          <div class="card-title"><div class="dot"></div>Opções de Assinatura</div>
+          <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+            <div>
+              <label style="font-size:12px;font-weight:700;color:var(--muted);display:block;margin-bottom:4px">OPACIDADE</label>
+              <div style="display:flex;align-items:center;gap:8px">
+                <input type="range" id="sg-opacity" min="10" max="100" value="100" oninput="sgUpdateOpacity()" style="width:120px">
+                <span id="sg-opacity-val" style="font-size:13px;font-weight:700;min-width:36px">100%</span>
+              </div>
+            </div>
+            <div>
+              <label style="font-size:12px;font-weight:700;color:var(--muted);display:block;margin-bottom:4px">APLICAR EM</label>
+              <select id="sg-apply-scope" style="padding:7px 12px;border:1.5px solid var(--border);border-radius:3px;font-size:13px;font-family:Arial;background:#fff">
+                <option value="current">Apenas esta página</option>
+                <option value="all">Todas as páginas</option>
+              </select>
+            </div>
+            <div style="margin-left:auto">
+              <button type="button" class="btn-process" id="sg-apply-btn" onclick="sgApplySignature()">✅ Aplicar Assinatura e Baixar PDF</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="sg-placeholder" style="margin-top:8px">
+        <div class="card" style="text-align:center;padding:48px 24px;color:var(--muted)">
+          <div style="font-size:48px;margin-bottom:12px">📄</div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:6px">Nenhum PDF carregado</div>
+          <div style="font-size:13px">Faça upload de um PDF e de uma imagem de assinatura para começar</div>
+        </div>
+      </div>
+
+      <div class="progress-wrap" id="sg-prog"><div class="progress-bg"><div class="progress-fill" id="sg-bar"></div></div><div class="progress-txt" id="sg-txt"></div></div>
+      <div class="alert alert-err" id="sg-err"></div>
+      <div class="alert alert-ok" id="sg-ok"></div>
     </div>
 
   </main>
 </div>
 
+<!-- Modal: Salvar Assinatura -->
+<div id="sg-name-modal">
+  <div id="sg-name-modal-box">
+    <h3>💾 Salvar Assinatura</h3>
+    <label style="font-size:12px;font-weight:700;color:var(--muted);display:block;margin-bottom:6px">NOME DA ASSINATURA</label>
+    <input type="text" id="sg-name-input" placeholder="Ex: Fulano de Tal" maxlength="40" onkeydown="if(event.key==='Enter')sgConfirmSave()">
+    <div id="sg-name-modal-btns">
+      <button type="button" class="btn-outline-red" onclick="sgCloseNameModal()">Cancelar</button>
+      <button type="button" style="display:inline-flex;align-items:center;gap:6px;padding:9px 18px;background:var(--purple);color:#fff;border:none;border-radius:3px;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;cursor:pointer" onclick="sgConfirmSave()">Salvar</button>
+    </div>
+  </div>
+</div>
+
 <script>
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+// init saved signatures
+sgRenderSavedList();
 
 const files = { cc: null, xl: null, cp: null, uz_cc: null, uz_cp: null };
 const stored = { cc: [], cp: [] };
@@ -397,23 +715,16 @@ function sanitize(s) {
 // ---- EXTRACT FULL NAME ----
 function extractName(text, idx) {
   const t = text.replace(/\s+/g, ' ').trim();
-
-  // Pattern 1: ALL CAPS full name after "Nome :"
   let m = t.match(/Nome\s*:\s*((?:[A-ZÀÁÂÃÉÊÍÓÔÕÚÇ]{2,}\s+){1,8}[A-ZÀÁÂÃÉÊÍÓÔÕÚÇ]{2,})/);
   if (m && m[1].trim().split(/\s+/).length >= 2) return m[1].trim();
-
-  // Pattern 2: Mixed case, stops at known keywords or 2+ spaces
   m = t.match(/Nome\s*:\s*([A-ZÀÁÂÃÉÊÍÓÔÕÚÇ][A-Za-zÀ-ú]+(?:\s+[A-Za-zÀ-ú]+){1,8}?)(?=\s{2,}|\s*(?:Local|Fun|Sal|Mat|Nome\s*Soc|CBO|Ordem|CNPJ|$))/);
   if (m && m[1].trim().split(/\s+/).length >= 2) return m[1].trim();
-
-  // Pattern 3: loose fallback
   m = t.match(/Nome\s*:\s*([A-Za-zÀ-ú]{2,}(?:\s+[A-Za-zÀ-ú]{2,}){1,8})/i);
   if (m && m[1].trim().split(/\s+/).length >= 2) return m[1].trim();
-
   return 'Colaborador_Pag_' + (idx + 1);
 }
 
-// ---- PROCESS CONTRACHEQUES (append "1" to name) ----
+// ---- PROCESS CONTRACHEQUES ----
 async function processCC() {
   hideAlerts('cc');
   if (!files.cc) { showErr('cc', '⚠ Selecione o arquivo PDF primeiro.'); return; }
@@ -422,7 +733,6 @@ async function processCC() {
   stored.cc = [];
   document.getElementById('cc-grid').innerHTML = '';
   document.getElementById('cc-results').style.display = 'none';
-
   try {
     setProgress('cc', 5, 'Carregando PDF...');
     const buf = await files.cc.arrayBuffer();
@@ -430,7 +740,6 @@ async function processCC() {
     const pdfjs = await pdfjsLib.getDocument({ data: new Uint8Array(buf) }).promise;
     const total = pdfDoc.getPageCount();
     setProgress('cc', 10, `PDF com ${total} páginas carregado`);
-
     for (let i = 0; i < total; i++) {
       setProgress('cc', 10 + Math.round((i / total) * 85), `Processando página ${i+1} de ${total}...`);
       const text = await pageText(pdfjs, i + 1);
@@ -439,14 +748,12 @@ async function processCC() {
       const [pg] = await newDoc.copyPages(pdfDoc, [i]);
       newDoc.addPage(pg);
       const bytes = await newDoc.save();
-      // Append "1" to distinguish contracheque from comprovante
       addResult('cc', sanitize(name) + ' 1.pdf', bytes, 1);
     }
     setProgress('cc', 100, 'Concluído!');
     document.getElementById('cc-results').style.display = 'block';
     showOk('cc', `✅ ${total} contracheque(s) separado(s) com sucesso!`);
   } catch(e) {
-    console.error(e);
     showErr('cc', '❌ Erro: ' + e.message);
     document.getElementById('cc-prog').style.display = 'none';
   }
@@ -495,7 +802,6 @@ async function processCP() {
   stored.cp = [];
   document.getElementById('cp-grid').innerHTML = '';
   document.getElementById('cp-results').style.display = 'none';
-
   try {
     setProgress('cp', 5, 'Carregando PDF...');
     const buf = await files.cp.arrayBuffer();
@@ -503,7 +809,6 @@ async function processCP() {
     const pdfjs = await pdfjsLib.getDocument({ data: new Uint8Array(buf) }).promise;
     const total = pdfDoc.getPageCount();
     setProgress('cp', 10, `PDF com ${total} páginas carregado`);
-
     const groups = {};
     for (let i = 0; i < total; i++) {
       setProgress('cp', 10 + Math.round((i / total) * 60), `Analisando página ${i+1} de ${total}...`);
@@ -531,7 +836,6 @@ async function processCP() {
         }
       }
     }
-
     const keys = Object.keys(groups);
     for (let i = 0; i < keys.length; i++) {
       const g = groups[keys[i]];
@@ -542,7 +846,6 @@ async function processCP() {
       const bytes = await newDoc.save();
       addResult('cp', sanitize(g.collab.NOME) + '.pdf', bytes, g.pages.length);
     }
-
     setProgress('cp', 100, 'Concluído!');
     document.getElementById('cp-results').style.display = 'block';
     const unmatched = total - Object.values(groups).reduce((a, g) => a + g.pages.length, 0);
@@ -550,7 +853,6 @@ async function processCP() {
     if (unmatched > 0) msg += ` (${unmatched} pág. não identificada(s))`;
     showOk('cp', msg);
   } catch(e) {
-    console.error(e);
     showErr('cp', '❌ Erro: ' + e.message);
     document.getElementById('cp-prog').style.display = 'none';
   }
@@ -558,15 +860,13 @@ async function processCP() {
 }
 
 // ======== UNIFICAR COMPROVANTES ========
-
-// Read all files from a ZIP, returns Map<baseName, Uint8Array>
 async function readZipFiles(zipFile) {
   const buf = await zipFile.arrayBuffer();
   const zip = await JSZip.loadAsync(buf);
   const result = new Map();
   for (const [filename, entry] of Object.entries(zip.files)) {
     if (entry.dir) continue;
-    const name = filename.split('/').pop(); // strip folder path
+    const name = filename.split('/').pop();
     if (name.toLowerCase().endsWith('.pdf')) {
       const bytes = await entry.async('uint8array');
       result.set(name, bytes);
@@ -575,126 +875,599 @@ async function readZipFiles(zipFile) {
   return result;
 }
 
-// Normalize name for matching: lowercase, remove accents, trim spaces
 function normName(s) {
-  return s
-    .toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
+  return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim();
 }
-
-// Strip suffix like " 1" and ".pdf" from filename for matching
-function baseNameCC(filename) {
-  // "FELIPE CANDIDO SAFI 1.pdf" -> "felipe candido safi"
-  return normName(filename.replace(/\.pdf$/i, '').replace(/\s*1\s*$/, '').trim());
-}
-
-function baseNameCP(filename) {
-  // "FELIPE CANDIDO SAFI.pdf" -> "felipe candido safi"
-  return normName(filename.replace(/\.pdf$/i, '').trim());
-}
+function baseNameCC(filename) { return normName(filename.replace(/\.pdf$/i, '').replace(/\s*1\s*$/, '').trim()); }
+function baseNameCP(filename) { return normName(filename.replace(/\.pdf$/i, '').trim()); }
 
 async function processUnify() {
   hideAlerts('uz');
   if (!files.uz_cc) { showErr('uz', '⚠ Selecione o ZIP dos contracheques.'); return; }
   if (!files.uz_cp) { showErr('uz', '⚠ Selecione o ZIP dos comprovantes.'); return; }
-
   const btn = document.getElementById('uz-btn');
   btn.disabled = true;
   document.getElementById('uz-results').style.display = 'none';
   document.getElementById('uz-summary').innerHTML = '';
-
   try {
     setProgress('uz', 5, 'Lendo ZIP de contracheques...');
     const ccFiles = await readZipFiles(files.uz_cc);
     setProgress('uz', 25, 'Lendo ZIP de comprovantes...');
     const cpFiles = await readZipFiles(files.uz_cp);
-
     setProgress('uz', 40, 'Cruzando arquivos...');
-
-    // Build lookup map for comprovantes
     const cpMap = new Map();
-    for (const [fname] of cpFiles) {
-      cpMap.set(baseNameCP(fname), fname);
-    }
-
-    const matched = [];
-    const unmatchedCC = [];
-
+    for (const [fname] of cpFiles) cpMap.set(baseNameCP(fname), fname);
+    const matched = [], unmatchedCC = [];
     for (const [ccFname] of ccFiles) {
       const key = baseNameCC(ccFname);
-      if (cpMap.has(key)) {
-        matched.push({ key, ccFname, cpFname: cpMap.get(key) });
-      } else {
-        unmatchedCC.push(ccFname);
-      }
+      if (cpMap.has(key)) matched.push({ key, ccFname, cpFname: cpMap.get(key) });
+      else unmatchedCC.push(ccFname);
     }
-
-    setProgress('uz', 50, `${matched.length} pares encontrados. Unificando PDFs...`);
-
+    setProgress('uz', 50, `${matched.length} pares encontrados. Unificando...`);
     const mergedDoc = await PDFLib.PDFDocument.create();
-    let done = 0;
-
-    for (const pair of matched) {
-      setProgress('uz', 50 + Math.round((done / matched.length) * 45),
-        `Unificando: ${pair.key}...`);
-
-      const ccBytes = ccFiles.get(pair.ccFname);
-      const cpBytes = cpFiles.get(pair.cpFname);
-
-      const ccDoc = await PDFLib.PDFDocument.load(ccBytes);
-      const cpDoc = await PDFLib.PDFDocument.load(cpBytes);
-
+    for (let i = 0; i < matched.length; i++) {
+      const pair = matched[i];
+      setProgress('uz', 50 + Math.round((i / matched.length) * 45), `Unificando: ${pair.key}...`);
+      const ccDoc = await PDFLib.PDFDocument.load(ccFiles.get(pair.ccFname));
+      const cpDoc = await PDFLib.PDFDocument.load(cpFiles.get(pair.cpFname));
       const ccPages = await mergedDoc.copyPages(ccDoc, ccDoc.getPageIndices());
       const cpPages = await mergedDoc.copyPages(cpDoc, cpDoc.getPageIndices());
-
       ccPages.forEach(p => mergedDoc.addPage(p));
       cpPages.forEach(p => mergedDoc.addPage(p));
-
-      done++;
     }
-
     setProgress('uz', 97, 'Gerando PDF final...');
     const finalBytes = await mergedDoc.save();
     const blob = new Blob([finalBytes], { type: 'application/pdf' });
     const url = URL.createObjectURL(blob);
-
-    // Show result
     setProgress('uz', 100, 'Concluído!');
     document.getElementById('uz-results').style.display = 'block';
-
-    // Summary
     let summaryHtml = `<div style="margin-bottom:12px;font-size:13px;color:var(--muted)">
       <strong style="color:var(--text)">${matched.length}</strong> colaboradores unificados
-      ${unmatchedCC.length > 0 ? `· <strong style="color:var(--error)">${unmatchedCC.length}</strong> contracheque(s) sem comprovante correspondente` : ''}
+      ${unmatchedCC.length > 0 ? `· <strong style="color:var(--error)">${unmatchedCC.length}</strong> sem par` : ''}
     </div>`;
-
-    if (unmatchedCC.length > 0) {
-      summaryHtml += `<div style="font-size:12px;color:var(--error);margin-bottom:12px">
-        Sem par: ${unmatchedCC.map(f => f.replace('.pdf','')).join(', ')}
-      </div>`;
-    }
+    if (unmatchedCC.length > 0) summaryHtml += `<div style="font-size:12px;color:var(--error);margin-bottom:12px">Sem par: ${unmatchedCC.map(f=>f.replace('.pdf','')).join(', ')}</div>`;
     document.getElementById('uz-summary').innerHTML = summaryHtml;
-
-    // Download button
     const dlBtn = document.getElementById('uz-dl-final');
     dlBtn.style.display = 'inline-flex';
-    dlBtn.onclick = () => {
-      const a = document.createElement('a');
-      a.href = url; a.download = 'Contracheques_Comprovantes_Unificados.pdf'; a.click();
-    };
-
-    showOk('uz', `✅ PDF unificado gerado com ${matched.length} colaboradores!`);
-
+    dlBtn.onclick = () => { const a = document.createElement('a'); a.href = url; a.download = 'Contracheques_Comprovantes_Unificados.pdf'; a.click(); };
+    showOk('uz', `✅ PDF unificado com ${matched.length} colaboradores!`);
   } catch(e) {
-    console.error(e);
-    showErr('uz', '❌ Erro ao unificar: ' + e.message);
+    showErr('uz', '❌ Erro: ' + e.message);
     document.getElementById('uz-prog').style.display = 'none';
   }
   btn.disabled = false;
 }
 
+// ======== UNIFICAR PDF (drag & drop reorder) ========
+let pdfMergeList = []; // array of { id, name, file, pageCount }
+let dragSrcId = null;
+
+function onPdfFilesAdded(input) {
+  const newFiles = Array.from(input.files);
+  newFiles.forEach(f => {
+    const id = 'pdf_' + Date.now() + '_' + Math.random().toString(36).substr(2,5);
+    pdfMergeList.push({ id, name: f.name, file: f, pageCount: '...' });
+    // Read page count async
+    f.arrayBuffer().then(buf => PDFLib.PDFDocument.load(buf)).then(doc => {
+      const item = pdfMergeList.find(x => x.id === id);
+      if (item) { item.pageCount = doc.getPageCount(); renderPdfList(); }
+    }).catch(() => {});
+  });
+  input.value = '';
+  renderPdfList();
+}
+
+function renderPdfList() {
+  const list = document.getElementById('pdf-merge-list');
+  const empty = document.getElementById('pdf-merge-empty');
+  const actions = document.getElementById('pdf-merge-actions');
+
+  if (!pdfMergeList.length) {
+    list.innerHTML = '';
+    empty.style.display = 'block';
+    actions.style.display = 'none';
+    return;
+  }
+  empty.style.display = 'none';
+  actions.style.display = 'flex';
+  list.innerHTML = '';
+
+  pdfMergeList.forEach((item, idx) => {
+    const el = document.createElement('div');
+    el.className = 'pdf-merge-item';
+    el.setAttribute('draggable', 'true');
+    el.dataset.id = item.id;
+    el.innerHTML = `
+      <div class="pdf-merge-handle" title="Arraste para reordenar">⠿</div>
+      <div class="pdf-merge-num">${idx + 1}</div>
+      <div class="pdf-merge-icon">📄</div>
+      <div class="pdf-merge-info">
+        <div class="pdf-merge-name">${item.name}</div>
+        <div class="pdf-merge-pages">${item.pageCount === '...' ? 'Carregando...' : item.pageCount + ' página' + (item.pageCount !== 1 ? 's' : '')}</div>
+      </div>
+      <button class="pdf-merge-remove" onclick="removePdfItem('${item.id}')" title="Remover">✕</button>
+    `;
+    // Drag events
+    el.addEventListener('dragstart', e => {
+      dragSrcId = item.id;
+      el.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    el.addEventListener('dragend', () => {
+      el.classList.remove('dragging');
+      document.querySelectorAll('.pdf-merge-item').forEach(i => i.classList.remove('drag-over-item'));
+    });
+    el.addEventListener('dragover', e => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      document.querySelectorAll('.pdf-merge-item').forEach(i => i.classList.remove('drag-over-item'));
+      el.classList.add('drag-over-item');
+    });
+    el.addEventListener('dragleave', () => el.classList.remove('drag-over-item'));
+    el.addEventListener('drop', e => {
+      e.preventDefault();
+      el.classList.remove('drag-over-item');
+      if (dragSrcId === item.id) return;
+      const srcIdx = pdfMergeList.findIndex(x => x.id === dragSrcId);
+      const dstIdx = pdfMergeList.findIndex(x => x.id === item.id);
+      if (srcIdx < 0 || dstIdx < 0) return;
+      const [moved] = pdfMergeList.splice(srcIdx, 1);
+      pdfMergeList.splice(dstIdx, 0, moved);
+      renderPdfList();
+    });
+    list.appendChild(el);
+  });
+}
+
+function removePdfItem(id) {
+  pdfMergeList = pdfMergeList.filter(x => x.id !== id);
+  renderPdfList();
+  hideAlerts('pm');
+}
+
+function clearPdfList() {
+  pdfMergeList = [];
+  renderPdfList();
+  document.getElementById('pm-results').style.display = 'none';
+  hideAlerts('pm');
+}
+
+async function processPdfMerge() {
+  hideAlerts('pm');
+  if (pdfMergeList.length < 2) { showErr('pm', '⚠ Adicione pelo menos 2 arquivos PDF para unificar.'); return; }
+  const btn = document.getElementById('pm-btn');
+  btn.disabled = true;
+  document.getElementById('pm-results').style.display = 'none';
+  try {
+    setProgress('pm', 5, 'Iniciando unificação...');
+    const mergedDoc = await PDFLib.PDFDocument.create();
+    for (let i = 0; i < pdfMergeList.length; i++) {
+      const item = pdfMergeList[i];
+      setProgress('pm', 5 + Math.round((i / pdfMergeList.length) * 90), `Adicionando: ${item.name}...`);
+      const buf = await item.file.arrayBuffer();
+      const srcDoc = await PDFLib.PDFDocument.load(buf);
+      const pages = await mergedDoc.copyPages(srcDoc, srcDoc.getPageIndices());
+      pages.forEach(p => mergedDoc.addPage(p));
+    }
+    setProgress('pm', 97, 'Gerando PDF final...');
+    const finalBytes = await mergedDoc.save();
+    const blob = new Blob([finalBytes], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    setProgress('pm', 100, 'Concluído!');
+    document.getElementById('pm-results').style.display = 'block';
+    const totalPages = pdfMergeList.reduce((a, x) => a + (typeof x.pageCount === 'number' ? x.pageCount : 0), 0);
+    const dlBtn = document.getElementById('pm-dl-final');
+    dlBtn.onclick = () => { const a = document.createElement('a'); a.href = url; a.download = 'PDF_Unificado.pdf'; a.click(); };
+    showOk('pm', `✅ ${pdfMergeList.length} arquivo(s) unificado(s) em um único PDF!`);
+  } catch(e) {
+    showErr('pm', '❌ Erro: ' + e.message);
+    document.getElementById('pm-prog').style.display = 'none';
+  }
+  btn.disabled = false;
+}
+
+// ======== ASSINATURAS SALVAS ========
+const SG_STORAGE_KEY = 'pa_saved_signatures';
+
+function sgGetSaved() {
+  try { return JSON.parse(localStorage.getItem(SG_STORAGE_KEY) || '[]'); } catch { return []; }
+}
+function sgPutSaved(arr) {
+  localStorage.setItem(SG_STORAGE_KEY, JSON.stringify(arr));
+}
+
+function sgRenderSavedList() {
+  const list = sgGetSaved();
+  const grid = document.getElementById('sg-saved-grid');
+  const empty = document.getElementById('sg-saved-empty');
+  grid.innerHTML = '';
+  if (!list.length) {
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  list.forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'sg-saved-item';
+    div.innerHTML = `
+      <img class="sg-saved-item-img" src="${item.dataUrl}" title="Clique para usar" alt="${item.name}" onclick="sgUseSaved(${idx})">
+      <div class="sg-saved-item-name" title="${item.name}">${item.name}</div>
+      <div class="sg-saved-item-footer">
+        <button class="sg-saved-use-btn" onclick="sgUseSaved(${idx})">✔ Usar</button>
+        <button class="sg-saved-del-btn" title="Excluir" onclick="sgDeleteSaved(${idx})">🗑</button>
+      </div>`;
+    grid.appendChild(div);
+  });
+}
+
+function sgSaveCurrentSig() {
+  if (!sgSigDataUrl) return;
+  document.getElementById('sg-name-input').value = sgSigFile ? sgSigFile.name.replace(/\.[^.]+$/, '') : 'Assinatura';
+  document.getElementById('sg-name-modal').classList.add('open');
+  setTimeout(() => document.getElementById('sg-name-input').select(), 80);
+}
+
+function sgCloseNameModal() {
+  document.getElementById('sg-name-modal').classList.remove('open');
+}
+
+function sgConfirmSave() {
+  const name = document.getElementById('sg-name-input').value.trim() || 'Assinatura';
+  const list = sgGetSaved();
+  list.unshift({ name, dataUrl: sgSigDataUrl, savedAt: Date.now() });
+  sgPutSaved(list);
+  sgRenderSavedList();
+  sgCloseNameModal();
+  // feedback visual no botão
+  const btn = document.getElementById('sg-save-btn');
+  btn.textContent = '✅ Salva!';
+  setTimeout(() => { btn.textContent = '💾 Salvar Assinatura Atual'; }, 1800);
+}
+
+function sgDeleteSaved(idx) {
+  const list = sgGetSaved();
+  list.splice(idx, 1);
+  sgPutSaved(list);
+  sgRenderSavedList();
+}
+
+function sgUseSaved(idx) {
+  const item = sgGetSaved()[idx];
+  if (!item) return;
+  // simula carga da assinatura
+  sgSigDataUrl = item.dataUrl;
+  sgSigFile = null;
+  document.getElementById('sg-sig-area').classList.add('has-file');
+  document.getElementById('sg-sig-tag').classList.add('show');
+  document.getElementById('sg-sig-tag-name').textContent = item.name;
+  document.getElementById('sg-sig-tag-size').textContent = 'salva';
+  document.getElementById('sg-sig-preview').src = item.dataUrl;
+  document.getElementById('sg-sig-preview-wrap').style.display = 'block';
+  const img = document.getElementById('sg-sig-img');
+  img.src = item.dataUrl;
+  const tmp = new Image();
+  tmp.onload = () => {
+    const ratio = tmp.naturalHeight / tmp.naturalWidth;
+    sgSig.h = Math.round(sgSig.w * ratio);
+    sgUpdateOverlay();
+  };
+  tmp.src = item.dataUrl;
+  document.getElementById('sg-sig-overlay').style.display = 'block';
+  if (sgPdfDoc) sgShowEditor();
+  // feedback
+  const btn = document.getElementById('sg-save-btn');
+  btn.disabled = false;
+}
+
+// Fechar modal ao clicar fora
+document.addEventListener('click', e => {
+  const modal = document.getElementById('sg-name-modal');
+  if (modal && modal.classList.contains('open') && e.target === modal) sgCloseNameModal();
+});
+
+// ======== ASSINAR DOCUMENTO ========
+let sgPdfDoc = null;       // pdf.js doc
+let sgPdfBytes = null;     // raw bytes for pdf-lib
+let sgPdfFile = null;      // File object
+let sgSigDataUrl = null;   // base64 data URL da assinatura
+let sgSigFile = null;
+let sgCurrentPage = 1;
+let sgTotalPages = 0;
+let sgScale = 1.5;
+
+// Estado da assinatura (em pixels do canvas)
+let sgSig = { x: 60, y: 60, w: 200, h: 0 }; // h calculado depois pela proporção
+
+// Drag state
+let sgDrag = null; // { mode:'move'|corner, startX,startY, origX,origY,origW,origH }
+
+// ---------- UPLOAD PDF ----------
+function sgDropPdf(e) {
+  e.preventDefault();
+  document.getElementById('sg-pdf-area').classList.remove('drag-over');
+  const f = e.dataTransfer.files[0];
+  if (!f || !f.name.endsWith('.pdf')) return;
+  _sgSetPdfFile(f);
+}
+function sgLoadPdf(input) {
+  const f = input.files[0]; if (!f) return;
+  _sgSetPdfFile(f);
+}
+async function _sgSetPdfFile(f) {
+  sgPdfFile = f;
+  document.getElementById('sg-pdf-area').classList.add('has-file');
+  document.getElementById('sg-pdf-tag').classList.add('show');
+  document.getElementById('sg-pdf-tag-name').textContent = f.name;
+  document.getElementById('sg-pdf-tag-size').textContent = (f.size/1024/1024).toFixed(2)+' MB';
+  sgPdfBytes = new Uint8Array(await f.arrayBuffer());
+  sgPdfDoc = await pdfjsLib.getDocument({ data: sgPdfBytes.slice(0) }).promise;
+  sgTotalPages = sgPdfDoc.numPages;
+  sgCurrentPage = 1;
+  // populate page select
+  const sel = document.getElementById('sg-page-select');
+  sel.innerHTML = '';
+  for (let i=1;i<=sgTotalPages;i++) { const o=document.createElement('option'); o.value=i; o.textContent='Página '+i; sel.appendChild(o); }
+  document.getElementById('sg-page-info').textContent = sgTotalPages+' página'+(sgTotalPages>1?'s':'');
+  await sgRenderPage(1);
+  sgShowEditor();
+}
+function sgClearPdf() {
+  sgPdfDoc=null; sgPdfBytes=null; sgPdfFile=null; sgTotalPages=0;
+  document.getElementById('sg-pdf-area').classList.remove('has-file');
+  document.getElementById('sg-pdf-tag').classList.remove('show');
+  document.getElementById('sg-pdf-file').value='';
+  sgHideEditor();
+}
+
+// ---------- UPLOAD SIG ----------
+function sgDropSig(e) {
+  e.preventDefault();
+  document.getElementById('sg-sig-area').classList.remove('drag-over');
+  const f = e.dataTransfer.files[0];
+  if (!f) return;
+  _sgSetSigFile(f);
+}
+function sgLoadSig(input) {
+  const f = input.files[0]; if (!f) return;
+  _sgSetSigFile(f);
+}
+function _sgSetSigFile(f) {
+  sgSigFile = f;
+  document.getElementById('sg-sig-area').classList.add('has-file');
+  document.getElementById('sg-sig-tag').classList.add('show');
+  document.getElementById('sg-sig-tag-name').textContent = f.name;
+  document.getElementById('sg-sig-tag-size').textContent = (f.size/1024).toFixed(1)+' KB';
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    sgSigDataUrl = ev.target.result;
+    document.getElementById('sg-save-btn').disabled = false;
+    // show preview
+    document.getElementById('sg-sig-preview').src = sgSigDataUrl;
+    document.getElementById('sg-sig-preview-wrap').style.display = 'block';
+    // update overlay image
+    const img = document.getElementById('sg-sig-img');
+    img.src = sgSigDataUrl;
+    // compute natural aspect ratio → set initial height
+    const tmp = new Image();
+    tmp.onload = () => {
+      const ratio = tmp.naturalHeight / tmp.naturalWidth;
+      sgSig.h = Math.round(sgSig.w * ratio);
+      sgUpdateOverlay();
+    };
+    tmp.src = sgSigDataUrl;
+    document.getElementById('sg-sig-overlay').style.display = 'block';
+    if (sgPdfDoc) sgShowEditor();
+  };
+  reader.readAsDataURL(f);
+}
+function sgClearSig() {
+  sgSigDataUrl=null; sgSigFile=null;
+  document.getElementById('sg-save-btn').disabled = true;
+  document.getElementById('sg-sig-area').classList.remove('has-file');
+  document.getElementById('sg-sig-tag').classList.remove('show');
+  document.getElementById('sg-sig-file').value='';
+  document.getElementById('sg-sig-preview-wrap').style.display='none';
+  document.getElementById('sg-sig-overlay').style.display='none';
+}
+
+// ---------- RENDER ----------
+async function sgRenderPage(pageNum) {
+  if (!sgPdfDoc) return;
+  sgCurrentPage = pageNum;
+  const page = await sgPdfDoc.getPage(pageNum);
+  const viewport = page.getViewport({ scale: sgScale });
+  const canvas = document.getElementById('sg-pdf-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = viewport.width;
+  canvas.height = viewport.height;
+  await page.render({ canvasContext: ctx, viewport }).promise;
+  sgUpdateOverlay();
+}
+
+function sgShowEditor() {
+  if (!sgPdfDoc) return;
+  document.getElementById('sg-editor-wrap').style.display = 'block';
+  document.getElementById('sg-placeholder').style.display = 'none';
+}
+function sgHideEditor() {
+  document.getElementById('sg-editor-wrap').style.display = 'none';
+  document.getElementById('sg-placeholder').style.display = 'block';
+}
+
+// ---------- OVERLAY POSITION ----------
+function sgUpdateOverlay() {
+  const ov = document.getElementById('sg-sig-overlay');
+  ov.style.left = sgSig.x + 'px';
+  ov.style.top  = sgSig.y + 'px';
+  ov.style.width  = sgSig.w + 'px';
+  ov.style.height = sgSig.h + 'px';
+}
+function sgUpdateOpacity() {
+  const v = document.getElementById('sg-opacity').value;
+  document.getElementById('sg-opacity-val').textContent = v + '%';
+  document.getElementById('sg-sig-overlay').style.opacity = v/100;
+}
+
+// ---------- DRAG / RESIZE ----------
+(function(){
+  const getOv = () => document.getElementById('sg-sig-overlay');
+  const getContainer = () => document.getElementById('sg-canvas-container');
+
+  function ptFromEvent(e) {
+    const t = e.touches ? e.touches[0] : e;
+    return { x: t.clientX, y: t.clientY };
+  }
+
+  document.addEventListener('mousedown', onDown);
+  document.addEventListener('touchstart', onDown, { passive: false });
+
+  function onDown(e) {
+    const ov = getOv(); if (!ov || ov.style.display==='none') return;
+    const target = e.target;
+    const pt = ptFromEvent(e);
+
+    // resize handle?
+    if (target.classList.contains('sg-resize-handle')) {
+      e.preventDefault();
+      sgDrag = { mode: 'resize', corner: target.dataset.corner, startX: pt.x, startY: pt.y,
+        origX: sgSig.x, origY: sgSig.y, origW: sgSig.w, origH: sgSig.h };
+      return;
+    }
+    // move?
+    if (target === ov || ov.contains(target)) {
+      e.preventDefault();
+      sgDrag = { mode: 'move', startX: pt.x, startY: pt.y, origX: sgSig.x, origY: sgSig.y };
+    }
+  }
+
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('touchmove', onMove, { passive: false });
+
+  function onMove(e) {
+    if (!sgDrag) return;
+    e.preventDefault();
+    const pt = ptFromEvent(e);
+    const dx = pt.x - sgDrag.startX;
+    const dy = pt.y - sgDrag.startY;
+    const canvas = document.getElementById('sg-pdf-canvas');
+    const minW = 30, minH = 10;
+
+    if (sgDrag.mode === 'move') {
+      sgSig.x = Math.max(0, Math.min(canvas.width  - sgSig.w, sgDrag.origX + dx));
+      sgSig.y = Math.max(0, Math.min(canvas.height - sgSig.h, sgDrag.origY + dy));
+    } else {
+      // resize — maintain aspect ratio
+      const ratio = sgDrag.origH / sgDrag.origW;
+      let newW = sgDrag.origW, newH = sgDrag.origH, newX = sgDrag.origX, newY = sgDrag.origY;
+      const c = sgDrag.corner;
+
+      if (c === 'se') {
+        newW = Math.max(minW, sgDrag.origW + dx);
+        newH = Math.round(newW * ratio);
+      } else if (c === 'sw') {
+        newW = Math.max(minW, sgDrag.origW - dx);
+        newH = Math.round(newW * ratio);
+        newX = sgDrag.origX + sgDrag.origW - newW;
+      } else if (c === 'ne') {
+        newW = Math.max(minW, sgDrag.origW + dx);
+        newH = Math.round(newW * ratio);
+        newY = sgDrag.origY + sgDrag.origH - newH;
+      } else if (c === 'nw') {
+        newW = Math.max(minW, sgDrag.origW - dx);
+        newH = Math.round(newW * ratio);
+        newX = sgDrag.origX + sgDrag.origW - newW;
+        newY = sgDrag.origY + sgDrag.origH - newH;
+      }
+      newX = Math.max(0, newX); newY = Math.max(0, newY);
+      sgSig.x = newX; sgSig.y = newY; sgSig.w = newW; sgSig.h = newH;
+    }
+    sgUpdateOverlay();
+  }
+
+  document.addEventListener('mouseup', () => sgDrag = null);
+  document.addEventListener('touchend', () => sgDrag = null);
+})();
+
+// ---------- APPLY & DOWNLOAD ----------
+async function sgApplySignature() {
+  if (!sgPdfBytes || !sgSigDataUrl) {
+    document.getElementById('sg-err').textContent='⚠ Carregue o PDF e a assinatura antes de aplicar.';
+    document.getElementById('sg-err').style.display='block'; return;
+  }
+  document.getElementById('sg-err').style.display='none';
+  document.getElementById('sg-ok').style.display='none';
+
+  const btn = document.getElementById('sg-apply-btn');
+  btn.disabled=true;
+  document.getElementById('sg-prog').style.display='block';
+  document.getElementById('sg-bar').style.width='10%';
+  document.getElementById('sg-txt').textContent='Carregando PDF...';
+
+  try {
+    const pdfDoc = await PDFLib.PDFDocument.load(sgPdfBytes.slice(0));
+    const canvas = document.getElementById('sg-pdf-canvas');
+    const canvasW = canvas.width, canvasH = canvas.height;
+
+    const scope = document.getElementById('sg-apply-scope').value;
+    const opacity = parseInt(document.getElementById('sg-opacity').value) / 100;
+
+    // Embed image
+    document.getElementById('sg-bar').style.width='30%';
+    document.getElementById('sg-txt').textContent='Incorporando assinatura...';
+    const isPng = sgSigDataUrl.startsWith('data:image/png');
+    const b64 = sgSigDataUrl.split(',')[1];
+    const sigBytes = Uint8Array.from(atob(b64), c=>c.charCodeAt(0));
+    const sigImg = isPng
+      ? await pdfDoc.embedPng(sigBytes)
+      : await pdfDoc.embedJpg(sigBytes);
+
+    // Determine which pages
+    const pagesToSign = scope==='all'
+      ? pdfDoc.getPages()
+      : [pdfDoc.getPages()[sgCurrentPage-1]];
+
+    document.getElementById('sg-bar').style.width='50%';
+    document.getElementById('sg-txt').textContent='Aplicando assinatura...';
+
+    for (const pdfPage of pagesToSign) {
+      const { width: pw, height: ph } = pdfPage.getSize();
+      // Convert canvas coords to PDF coords
+      const scaleX = pw / canvasW;
+      const scaleY = ph / canvasH;
+      const pdfX = sgSig.x * scaleX;
+      const pdfW = sgSig.w * scaleX;
+      const pdfH = sgSig.h * scaleY;
+      // PDF y-axis is bottom-up
+      const pdfY = ph - (sgSig.y * scaleY) - pdfH;
+
+      pdfPage.drawImage(sigImg, {
+        x: pdfX, y: pdfY,
+        width: pdfW, height: pdfH,
+        opacity: opacity,
+      });
+    }
+
+    document.getElementById('sg-bar').style.width='85%';
+    document.getElementById('sg-txt').textContent='Gerando PDF final...';
+
+    const finalBytes = await pdfDoc.save();
+    const blob = new Blob([finalBytes], { type:'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    const origName = sgPdfFile ? sgPdfFile.name.replace('.pdf','') : 'documento';
+    const a = document.createElement('a'); a.href=url; a.download=origName+'_assinado.pdf'; a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),3000);
+
+    document.getElementById('sg-bar').style.width='100%';
+    document.getElementById('sg-txt').textContent='Concluído!';
+    document.getElementById('sg-ok').textContent='✅ PDF assinado baixado com sucesso!';
+    document.getElementById('sg-ok').style.display='block';
+  } catch(err) {
+    document.getElementById('sg-err').textContent='❌ Erro: '+err.message;
+    document.getElementById('sg-err').style.display='block';
+    document.getElementById('sg-prog').style.display='none';
+  }
+  btn.disabled=false;
+}
+
 </script>
-</body>
 </html>
